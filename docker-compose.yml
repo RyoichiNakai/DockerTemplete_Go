@@ -32,12 +32,15 @@ services:
 
     # ホスト上のボリュームとコンテナ側のボリュームを指定
     volumes:
-      - ./docker/api/go:/go/src:cached
+      # ホットリロード環境にてgoディレクトリを管理
+      - ./docker/api/go:/go/src/hot_reload_docker:cached
 
     # コンテナの永続化
     tty: true
 
     # command: node app.js
 
+    # 依存関係の追加
+    # dbのコンテナが立ち上がってから出ないとapiのコンテナが立ち上がらない
     depends_on:
       - db

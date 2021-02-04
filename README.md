@@ -55,3 +55,23 @@ docker-compose down
 
 - [MySQL に関するドキュメント](/docker/api/README.md)
 - [Golang に関するドキュメント](/docker/api/README.md)
+
+## その他コマンド
+
+- コンテナ削除
+
+```zsh
+# 全コンテナ削除
+docker rm $(docker ps -q -a)
+# 指定コンテナ削除
+docker rm [CONTAINER_ID]
+```
+
+- イメージ削除
+
+```zsh
+# 全イメージ削除
+docker rmi $(docker images -q)
+# 指定イメージ削除
+docker rmi [IMAGE_ID]
+```
