@@ -16,5 +16,6 @@ RUN apk update
 EXPOSE 8080
 
 # コンテナ内でホットリロード環境でmain.goを起動
+# デプロイ時にホットリロードを使っていいのかは不明
 RUN go get github.com/pilu/fresh
 CMD ["fresh"]
