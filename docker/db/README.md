@@ -17,7 +17,7 @@ exit
 
 ```sql
 # データベース一覧を表示
-show database;
+show databases;
 
 # 指定したデータベースの中に入る
 use [database];
