@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"net/http"
 
 	"github.com/gin-gonic/gin" // ginフレームワーク
 	_ "github.com/go-sql-driver/mysql" // mysql用ドライバー
@@ -63,14 +64,14 @@ func main() {
 	router := gin.Default()
 
 	router.GET("/ping", func (c *gin.Context)  {
-		c.JSON(200, gin.H{
+		c.JSON(http.StatusOK, gin.H{
 			"message": "dadsadasdsa",
 		})
 	})
 
 	router.GET("/users", func (c *gin.Context)  {
 		users := dbGetAll()
-		c.JSON(200, gin.H{
+		c.JSON(http.StatusOK, gin.H{
 			"users": users,
 		})
 	})
