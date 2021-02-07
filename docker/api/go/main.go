@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin" // ginフレームワーク
 	_ "github.com/go-sql-driver/mysql" // mysql用ドライバー
@@ -54,6 +55,15 @@ func dbGetAll() []User {
 	return users
 }
 
+func dbGetOneByID(id int) User {
+	db := gormConnect()
+	defer db.Close()
+
+	var user User
+	db.First(&user, id)
+	return user
+}
+
 func main() {
 	// 環境変数ファイルの読み込み
 	err := godotenv.Load(fmt.Sprintf("./%s.env", os.Getenv("GO_ENV")))
@@ -73,6 +83,18 @@ func main() {
 		users := dbGetAll()
 		c.JSON(http.StatusOK, gin.H{
 			"users": users,
+		})
+	})
+
+	router.GET("/users/:id", func (c *gin.Context)  {
+		n := c.Param("id")
+		id, err := strconv.Atoi(n)
+		if err != nil {
+				panic(err)
+		}
+		user := dbGetOneByID(id)
+		c.JSON(http.StatusOK, gin.H{
+			"users": user,
 		})
 	})
 
