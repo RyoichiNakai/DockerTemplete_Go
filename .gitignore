@@ -1,7 +1,7 @@
 # -----------------
 # Custom
 # -----------------
-/docker/db/mysql/data/*
+/docker/api/go/tmp/
 
 # -----------------
 # Mac
