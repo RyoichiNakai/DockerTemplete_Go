@@ -14,7 +14,7 @@ import (
 
 type User struct {
 	gorm.Model
-	NickName string `json:"nickName"`
+	NickName string
 }
 
 func gormConnect() *gorm.DB {
@@ -72,6 +72,7 @@ func main() {
 	}
 
 	router := gin.Default()
+	dbInit()
 
 	router.GET("/ping", func (c *gin.Context)  {
 		c.JSON(http.StatusOK, gin.H{
