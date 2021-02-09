@@ -15,7 +15,7 @@ services:
 
     volumes:
       # 永続化するためのマウント
-      - ./docker/db/mysql/data:/var/lib/mysql
+      # - ./docker/db/mysql/data:/var/lib/mysql
       # 設定ファイルが格納されている
       - ./docker/db/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
       # 初期データのクエリが格納されている
