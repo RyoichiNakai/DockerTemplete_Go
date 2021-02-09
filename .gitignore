@@ -1,7 +1,7 @@
 # -----------------
 # Custom
 # -----------------
-/docker/api/go/tmp/
+/docker/api/go/tmp/*
 
 # -----------------
 # Mac
